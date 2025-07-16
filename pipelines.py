@@ -28,7 +28,6 @@ print(X_train.head())
 
 
 
-
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
