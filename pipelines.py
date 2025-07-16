@@ -1,7 +1,6 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-# Read the data
 data = pd.read_csv('melb_data.csv')
 
 # Separate target from predictors
