@@ -12,7 +12,6 @@ X_train_full, X_valid_full, y_train, y_valid = train_test_split(X, y, train_size
                                                                 random_state=0)
 
 # "Cardinality" means the number of unique values in a column
-# Select categorical columns with relatively low cardinality (convenient but arbitrary)
 categorical_cols = [cname for cname in X_train_full.columns if X_train_full[cname].nunique() < 10 and 
                         X_train_full[cname].dtype == "object"]
 
