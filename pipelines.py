@@ -26,7 +26,6 @@ X_valid = X_valid_full[my_cols].copy()
 print(X_train.head())
 
 
-
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
@@ -69,6 +68,8 @@ preds = my_pipeline.predict(X_valid)
 score = mean_absolute_error(y_valid, preds)
 print('MAE:', score)
 # Output = MAE: 160679.18917034855
+
+
 
 # Improving the performance
 
