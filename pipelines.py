@@ -107,47 +107,45 @@ X_test = X_test_full[my_cols].copy()
 print(X_train.head())
 
 
-from sklearn.compose import ColumnTransformer
+
 from sklearn.pipeline import Pipeline
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import OneHotEncoder
 from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error
 
-# Numerical preprocessing
+# Numerical pipeline 
 numerical_transformer = Pipeline(steps=[
-    ('imputer', SimpleImputer(strategy='median')),
-    ('scaler', StandardScaler())
+    ('imputer', SimpleImputer(strategy='median'))
 ])
 
-# Categorical preprocessing
+# Categorical pipeline
 categorical_transformer = Pipeline(steps=[
     ('imputer', SimpleImputer(strategy='most_frequent')),
     ('encoder', OneHotEncoder(handle_unknown='ignore'))
 ])
 
-# Bundle preprocessing
+# Combine
 preprocessor = ColumnTransformer(transformers=[
     ('num', numerical_transformer, numerical_cols),
     ('cat', categorical_transformer, categorical_cols)
 ])
 
 # Model
-model = RandomForestRegressor(n_estimators=300, random_state=0)
+model = RandomForestRegressor(n_estimators=300, random_state=0, n_jobs=-1)
 
-# Full pipeline
+# Pipeline
 clf = Pipeline(steps=[
     ('preprocessor', preprocessor),
     ('model', model)
 ])
 
-# Fit model
+# Train & Evaluate
 clf.fit(X_train, y_train)
-
-# Predict
 preds = clf.predict(X_valid)
+mae = mean_absolute_error(y_valid, preds)
+print("Restored MAE:", mae)
 
-# Evaluate
-print("MAE:", mean_absolute_error(y_valid, preds))
 
 
