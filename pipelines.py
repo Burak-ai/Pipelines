@@ -58,6 +58,7 @@ my_pipeline = Pipeline(steps=[('preprocessor', preprocessor),
                               ('model', model)
                              ])
 
+
 # Preprocessing of training data, fit model 
 my_pipeline.fit(X_train, y_train)
 
@@ -76,7 +77,6 @@ print('MAE:', score)
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-# Read the data
 X_full = pd.read_csv('train.csv', index_col='Id')
 X_test_full = pd.read_csv('test.csv', index_col='Id')
 
@@ -106,7 +106,6 @@ X_train = X_train_full[my_cols].copy()
 X_valid = X_valid_full[my_cols].copy()
 X_test = X_test_full[my_cols].copy()
 print(X_train.head())
-
 
 
 from sklearn.pipeline import Pipeline
@@ -149,4 +148,3 @@ mae = mean_absolute_error(y_valid, preds)
 print("Restored MAE:", mae)
 
 # Output = MAE: 17347.422305936074
-
