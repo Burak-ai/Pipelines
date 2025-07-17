@@ -68,7 +68,7 @@ preds = my_pipeline.predict(X_valid)
 # Evaluate the model
 score = mean_absolute_error(y_valid, preds)
 print('MAE:', score)
-# Output:   MAE: 160679.18917034855
+# Output = MAE: 160679.18917034855
 
 # Improving the performance
 
