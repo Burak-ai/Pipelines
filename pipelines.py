@@ -147,5 +147,5 @@ preds = clf.predict(X_valid)
 mae = mean_absolute_error(y_valid, preds)
 print("Restored MAE:", mae)
 
-
+# Output = MAE: 17347.422305936074
 
