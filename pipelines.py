@@ -3,11 +3,9 @@ from sklearn.model_selection import train_test_split
 
 data = pd.read_csv('melb_data.csv')
 
-# Separate target from predictors
 y = data.Price
 X = data.drop(['Price'], axis=1)
 
-# Divide data into training and validation subsets
 X_train_full, X_valid_full, y_train, y_valid = train_test_split(X, y, train_size=0.8, test_size=0.2,
                                                                 random_state=0)
 
